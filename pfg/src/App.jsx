@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components"
 
 import Main from './pages/Main';
+import Board from './pages/Board';
+
 import NotFound from './pages/NotFound';
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -44,6 +46,7 @@ function App() {
           <AppRoutes>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/board" element={<Board />}/>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppRoutes>
