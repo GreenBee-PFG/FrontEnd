@@ -63,7 +63,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   const handleMoveBannerBtn = () => {
-    navigate(`/`);
+    navigate(`/adminpage`);
   };
 
   return (
@@ -72,7 +72,7 @@ const Main = () => {
         <Inner>
           <Title>Sample Banner</Title>
           <Description>Sample Text</Description>
-          <Button onClick={handleMoveBannerBtn}>Click</Button>
+          <Button onClick={handleMoveBannerBtn}>관리자 페이지로</Button>
         </Inner>
       </Banner>
     </BodyContent>

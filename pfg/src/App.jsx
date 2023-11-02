@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import Board from './pages/Board';
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
+import AdminPage from "./pages/AdminPage";
 
 import NotFound from './pages/NotFound';
 import Header from './component/Header';
@@ -48,6 +49,7 @@ function App() {
           <AppRoutes>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/adminpage" element={<AdminPage />} />
               <Route path="/board" element={<Board />}/>
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/updatepost" element={<UpdatePost />} />
