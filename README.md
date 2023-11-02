@@ -5,7 +5,7 @@
 1. [프로젝트 소개](#1-📖-프로젝트-소개)
 2. [팀 소개](#2-👥-팀-소개)
 3. [컨벤션](#3-⚙️-컨벤션)<br />
-[🔴 Git Commit Convention](#🔴-git-commit-convention)<br>
+🔴 [Git Commit Convention](#🔴-git-commit-convention)<br>
 
 
 ## 1. 📖 프로젝트 소개
