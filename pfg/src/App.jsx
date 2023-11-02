@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Main from './pages/Main';
 import Board from './pages/Board';
+import BoardDetail from "./pages/Detail";
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
 import AdminPage from "./pages/AdminPage";
@@ -51,6 +52,7 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="/board" element={<Board />}/>
+              <Route path="/detail/:id" element={<BoardDetail />} />
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/updatepost" element={<UpdatePost />} />
               <Route path="*" element={<NotFound />} />
