@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -15,13 +17,6 @@ const HeadContainer = styled.div`
 const Title = styled.h1`
   margin-bottom: 20px;
 `
-
-const Pagenum = styled.div`
-  width: 600px;
-  height: 100Px;
-  margin: auto;
-`
-
 
 const BoardItem = styled.div`
   margin-bottom: 10px;
@@ -55,21 +50,61 @@ const CreateButton = styled.button`
   }
 `
 
-
-
 const Board = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [totalIds, setTotalIds] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    console.log(totalIds);
+  }, [totalIds]);
+
+  useEffect(() => {
+    const getTotalIds = async () => {
+      let response = await axios.get("/api/total-ids");
+      const data = parseInt(response.headers.totalcount, 10);
+      console.log(data);
+      setTotalIds = data||0;
+    };
+    getTotalIds();
+  }, []);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, []);
+
+  useEffect(() => {
+    const getBoardList = async () => {
+      console.log('getBoardList()');
+      let response = await axios.get(`/api/board-list?pageNumber=${currentPage}`);
+      console.log('main/response: ', response);
+      setData(response.data.data || []);
+    };
+    getBoardList();
+  }, [currentPage]);
+
+  const handleCreateBoardClick = () => {
+    navigate('/createpost');
+  };
+
+  const handleBoardItemClick = (id) => {
+    navigate(`/detail/${id}`);
+  };
+
+ 
 
   return (
     <Container>
       <HeadContainer>
         <Title>게시판</Title>
-        <CreateButton>글쓰기</CreateButton>
+        <CreateButton onClick={handleCreateBoardClick}>글쓰기</CreateButton>
       </HeadContainer>
-      
-        <BoardItem>
-          <BoardTitle>게시글 제목</BoardTitle>
+      {data.map(board => (
+        <BoardItem key={board.id} onClick={() => handleBoardItemClick(board.id)}>
+          <BoardTitle>{board.title}</BoardTitle>
         </BoardItem>
-      
+      ))}
     </Container>
   );
 };
