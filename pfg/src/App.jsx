@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Main from './pages/Main';
 import Board from './pages/Board';
 import CreatePost from "./pages/CreatePost";
+import UpdatePost from "./pages/UpdatePost";
 
 import NotFound from './pages/NotFound';
 import Header from './component/Header';
@@ -49,6 +50,7 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route path="/board" element={<Board />}/>
               <Route path="/createpost" element={<CreatePost />} />
+              <Route path="/updatepost" element={<UpdatePost />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppRoutes>
