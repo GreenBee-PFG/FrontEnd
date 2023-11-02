@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import Main from './pages/Main';
 import Board from './pages/Board';
+import CreatePost from "./pages/CreatePost";
 
 import NotFound from './pages/NotFound';
 import Header from './component/Header';
@@ -47,6 +48,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/board" element={<Board />}/>
+              <Route path="/createpost" element={<CreatePost />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppRoutes>
