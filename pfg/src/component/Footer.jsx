@@ -24,8 +24,8 @@ const Footer = () => {
     return (
         <StyledFooter>
             <div>
-                <P>GreenTree</P>
-                <P>Copyright 2023. GreenTree All pictures cannot be copied without permission. </P>
+                <P>팀명</P>
+                <P>Copyright 2023. 팀명 All pictures cannot be copied without permission. </P>
             </div>
         </StyledFooter>
     )
