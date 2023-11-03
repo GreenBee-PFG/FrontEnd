@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import sampleimg from "../images/samplebanner.png";
+import Button from "../component/Button";
 
 const BodyContent = styled.div`
   width: 100%;
@@ -17,21 +18,6 @@ const Title = styled.h1`
 const Description = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
-`
-
-const Button = styled.button`
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  color: 333;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    color: white;
-    background-color: #555;
-  }
 `
 
 const Inner = styled.div`

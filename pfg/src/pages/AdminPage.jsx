@@ -41,7 +41,7 @@ const handleMoveClick = (pagelink) => {
             <Button onClick={() => handleMoveClick('createpost')}>글쓰기 페이지</Button>
             <Button onClick={() => handleMoveClick('updatepost')}>게시글 수정 페이지</Button>
             <Button onClick={() => handleMoveClick('detail/:id')}>게시글 페이지</Button>
-            <Button onClick={() => handleMoveClick('board')}>게시판</Button>
+            <Button onClick={() => handleMoveClick('devapi')}>gpt api 개발</Button>
             <Button onClick={() => handleMoveClick('board')}>게시판</Button>
         </MainContent>
 
