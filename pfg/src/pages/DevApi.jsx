@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CallGPT } from "../api/gpt"
 
@@ -10,18 +10,29 @@ const BodyContent = styled.div`
   flex-direction: column;
 `
 
-const handleClickAPICall = async() => {
-    console.log(">>GPTAPI");
-    await CallGPT();
-};
-
-
 const DevApi = () => {
+    const [data, setData] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleClickAPICall = async() => {
+        try {
+            setIsLoading(true);
+            const message = await CallGPT();
+            setData(message);
+        } catch (e){
+            console.error(e)
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <>
             <BodyContent>
                 <h1>dev gpt api</h1>
-                <Button onClick={() => handleClickAPICall}>GPT API call</Button>
+                <Button onClick={() => handleClickAPICall()}>GPT API call</Button>
+                <div>data : {data}</div>
+                <div>isLoading : {isLoading ? "loading.." : "fin"}</div>
             </BodyContent>
         </>
     );
