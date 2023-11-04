@@ -51,13 +51,15 @@ const DevApi = () => {
 
                 <Button onClick={() => handleClickAPICall()}>GPT API call</Button>
                 <div>{data}</div>
-                <div>isLoading : {isLoading ?  <Spinner /> : "fin"}</div>
-                <Textarea
-                    id="textarea_content"
-                    placeholder="직무를 입력해주세요"
-                    onChange={handleContentChange}
-                    value={content}
-                />
+                <div>{isLoading ?  <Spinner /> : "fin"}</div>
+                {!isLoading && (
+                    <Textarea
+                        id="textarea_content"
+                        placeholder="직무를 입력해주세요"
+                        onChange={handleContentChange}
+                        value={content}
+                    />
+                )}
             </BodyContent>
         </>
     );
