@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { CallGPT } from "../api/gpt"
 
@@ -14,8 +15,8 @@ const BodyContent = styled.div`
 `
 const Textarea = styled.textarea`
   text-align: center;
-  width: 180px;
-  height: 25px;
+  width: 70%;
+  height: 250px;
   resize: none;
   font-size: 16px;
   padding: 10px;
@@ -23,16 +24,18 @@ const Textarea = styled.textarea`
   border-radius: 5px;
 `
 
-const DevApi = () => {
+const InterviewContent = () => {
     const [data, setData] = useState("");
+    const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [job, setJob] = useState("");
+    const location = useLocation();
+    const job = location.state;
 
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
             const message = await CallGPT({prompt: job});
-            setData(message);
+            setData(JSON.parse(message));
         } catch (e){
             console.error(e)
         } finally {
@@ -40,31 +43,34 @@ const DevApi = () => {
         }
     };
 
-    const handleContentChange = (e) => {
-        setJob(e.target.value);
+    const handleAnswerChange = (e) => {
+        setAns(e.target.value);
       };
+
+    useEffect(() => {
+        handleClickAPICall();
+    }, [job]);
 
     return (
         <>
             <BodyContent>
-                <h1>ChatGPT API Development Page</h1>
-                {isLoading && <Spinner />}
-                <div>{data}</div>
                 {!isLoading && (
                     <>
-                    <Textarea
-                        id="textarea_content"
-                        placeholder="직무를 입력해주세요"
-                        onChange={handleContentChange}
-                        value={job}
-                    />
-                        <Button onClick={() => handleClickAPICall()}>API call</Button>
+                        <div>{data?.response}</div>
+                        <Textarea
+                            id="textarea_content"
+                            placeholder="질문에 대한 답변을 적어주세요"
+                            onChange={handleAnswerChange}
+                            value={ans}
+                        />
+                        <Button onClick={() => handleClickAPICall()}>질문 재생성</Button>
                     </>
                 )}
-                
+                {isLoading && <Spinner />}
+
             </BodyContent>
         </>
     );
-  }
+}
   
-  export default DevApi;
+export default InterviewContent;
