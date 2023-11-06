@@ -11,6 +11,7 @@ import AdminPage from "./pages/AdminPage";
 import DevApi from "./pages/DevApi";
 import InterviewMain from "./pages/InterviewMain";
 import InterviewContent from "./pages/InterviewContent";
+import InterviewFeedBack from "./pages/InterviewFeedBack";
 
 import NotFound from './pages/NotFound';
 import Header from './component/Header';
@@ -57,7 +58,8 @@ function App() {
               <Route path="/board" element={<Board />}/>
               <Route path="/devapi" element={<DevApi />}/>
               <Route path="/interview" element={<InterviewMain />}/>
-              <Route path="/interviewContent" element={<InterviewContent />}/>
+              <Route path="/interviewcontent" element={<InterviewContent />}/>
+              <Route path="/interviewfeedback" element={<InterviewFeedBack />}/>
               <Route path="/detail/:id" element={<BoardDetail />} />
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/updatepost" element={<UpdatePost />} />
