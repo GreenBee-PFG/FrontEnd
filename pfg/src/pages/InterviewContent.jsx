@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CallGPT } from "../api/gpt"
 
@@ -24,12 +24,18 @@ const Textarea = styled.textarea`
   border-radius: 5px;
 `
 
+const Btnarea = styled.div`
+ 
+`
+
 const InterviewContent = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const job = location.state;
+
     const [data, setData] = useState("");
     const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const location = useLocation();
-    const job = location.state;
 
     const handleClickAPICall = async() => {
         try {
@@ -43,13 +49,16 @@ const InterviewContent = () => {
         }
     };
 
+    const handleClickFeedBackCall = () => {
+        navigate('/'); 
+    }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
       };
 
     useEffect(() => {
         handleClickAPICall();
-    }, [job]);
+    }, []);
 
     return (
         <>
@@ -63,7 +72,11 @@ const InterviewContent = () => {
                             onChange={handleAnswerChange}
                             value={ans}
                         />
-                        <Button onClick={() => handleClickAPICall()}>질문 재생성</Button>
+                        <Btnarea>
+                            <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
+                            <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
+                        </Btnarea>
+                        
                     </>
                 )}
                 {isLoading && <Spinner />}
