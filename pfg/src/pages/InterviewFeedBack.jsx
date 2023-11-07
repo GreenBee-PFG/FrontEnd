@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CallGPT } from "../api/gpt"
 
@@ -14,8 +15,8 @@ const BodyContent = styled.div`
 `
 const Textarea = styled.textarea`
   text-align: center;
-  width: 180px;
-  height: 25px;
+  width: 70%;
+  height: 250px;
   resize: none;
   font-size: 16px;
   padding: 10px;
@@ -23,16 +24,23 @@ const Textarea = styled.textarea`
   border-radius: 5px;
 `
 
+const Btnarea = styled.div`
+ 
+`
+
 const InterviewFeedBack = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const ans = location.state;
+
     const [data, setData] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [job, setJob] = useState("");
 
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: job});
-            setData(message);
+            const message = await CallGPT({prompt: ans /** 이곳에 사용자 답변 전달 */});
+            setData(JSON.parse(message));
         } catch (e){
             console.error(e)
         } finally {
@@ -40,31 +48,41 @@ const InterviewFeedBack = () => {
         }
     };
 
-    const handleContentChange = (e) => {
-        setJob(e.target.value);
+    const handleClickFeedBackCall = () => {
+        navigate('/interviewfeedback',{state: ans}); 
+    }
+    const handleAnswerChange = (e) => {
+        //setAns(e.target.value);
       };
+
+    useEffect(() => {
+        //이곳에 페이지 로딩시 api 호출
+    }, []);
 
     return (
         <>
             <BodyContent>
-                <h1>ChatGPT API Development Page</h1>
-                {isLoading && <Spinner />}
-                <div>{data}</div>
                 {!isLoading && (
                     <>
-                    <Textarea
-                        id="textarea_content"
-                        placeholder="직무를 입력해주세요"
-                        onChange={handleContentChange}
-                        value={job}
-                    />
-                        <Button onClick={() => handleClickAPICall()}>API call</Button>
+                        <div>{data?.response}</div>
+                        <Textarea
+                            id="textarea_content"
+                            placeholder="질문에 대한 답변을 적어주세요"
+                            onChange={handleAnswerChange}
+                            //value={ans}
+                        />
+                        <Btnarea>
+                            <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
+                            <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
+                        </Btnarea>
+                        
                     </>
                 )}
-                
+                {isLoading && <Spinner />}
+
             </BodyContent>
         </>
     );
-  }
+}
   
-  export default InterviewFeedBack;
+export default InterviewFeedBack;

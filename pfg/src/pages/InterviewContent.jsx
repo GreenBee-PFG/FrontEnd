@@ -50,7 +50,7 @@ const InterviewContent = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/'); 
+        navigate('/interviewfeedback',{state: ans}); 
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
