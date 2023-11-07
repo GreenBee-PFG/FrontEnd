@@ -1,4 +1,4 @@
-export const CallGPT = async ({ prompt }) => {
+export const FeedBackGPT = async ({ prompt }) => {
     const messages = [
         {
             "role": "system",

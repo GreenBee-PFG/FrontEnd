@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CallGPT } from "../api/gpt"
+import { FeedBackGPT } from "../api/feedbackapt"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -31,7 +31,8 @@ const Btnarea = styled.div`
 const InterviewFeedBack = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const ans = location.state;
+    const ans = location.state.ans;
+    const job = location.state.job;
 
     const [data, setData] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ const InterviewFeedBack = () => {
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: ans /** 이곳에 사용자 답변 전달 */});
+            const message = await FeedBackGPT({prompt: {job, ans} });
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
@@ -51,9 +52,10 @@ const InterviewFeedBack = () => {
     const handleClickFeedBackCall = () => {
         navigate('/interviewfeedback',{state: ans}); 
     }
-    const handleAnswerChange = (e) => {
-        //setAns(e.target.value);
-      };
+
+    const handleClickRegenerate = () => {
+        navigate('/interviewContent', {state: job}); 
+    }
 
     useEffect(() => {
         //이곳에 페이지 로딩시 api 호출
@@ -65,14 +67,11 @@ const InterviewFeedBack = () => {
                 {!isLoading && (
                     <>
                         <div>{data?.response}</div>
-                        <Textarea
-                            id="textarea_content"
-                            placeholder="질문에 대한 답변을 적어주세요"
-                            onChange={handleAnswerChange}
-                            //value={ans}
-                        />
+                        <div>사용자 답변 : {ans}</div>
+                        <div>수정된 답변 : {ans}</div>
                         <Btnarea>
-                            <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
+                            <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
+                            <Button>공유?</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
                         </Btnarea>
                         
