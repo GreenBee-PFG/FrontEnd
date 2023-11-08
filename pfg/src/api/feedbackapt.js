@@ -1,19 +1,36 @@
-export const FeedBackGPT = async ({ prompt }) => {
+export const FeedBackGPT = async ({ job, ans, question}) => {
     const messages = [
         {
             "role": "system",
-            "content": "You are a hiring interviewer. When a user enters a job, interview questions tailored to that job can be created. Please only ask one interview question and do not print out examples."
+            "content": `You are the interviewer who edits answers to interview questions. It proceeds in the following order.`
         },
         {
-            "role": "user",
-            "content": `Translate into Korean and use the output in the following JSON format:
+            role: "user",
+            content: `
+            1. The user enters the job position.
+            2.User enters interview questions.
+            3.The user enters the answer to the question.
+            4. Correct any typos or incorrect parts in the user's answer.
+            5. Add words that can be added to the user's answer to Added.
+            6. Print using the output example.
+
+            Also, do not print examples.
+            Translate into Korean and use the output in the following JSON format:
+            
+
             {
-                response: [Your question should be entered here.]
-            }`
+                response: [Edited response goes here.]
+                added: [Added content goes here.]
+            }
+            `
         },
         {
             "role": "user",
-            "content": `${prompt}`
+            "content": `
+                user job: ${job}
+                interview questions: ${question}
+                user response: ${ans}
+            `
         }
     ];
 

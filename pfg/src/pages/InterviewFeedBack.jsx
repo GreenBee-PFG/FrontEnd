@@ -13,16 +13,6 @@ const BodyContent = styled.div`
   justify-content: center;
   align-items: center;
 `
-const Textarea = styled.textarea`
-  text-align: center;
-  width: 70%;
-  height: 250px;
-  resize: none;
-  font-size: 16px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`
 
 const Btnarea = styled.div`
  
@@ -33,46 +23,48 @@ const InterviewFeedBack = () => {
     const location = useLocation();
     const ans = location.state.ans;
     const job = location.state.job;
+    const question = location.state.question;
 
     const [data, setData] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
-    const handleClickAPICall = async() => {
-        try {
-            setIsLoading(true);
-            const message = await FeedBackGPT({prompt: {job, ans} });
-            setData(JSON.parse(message));
-        } catch (e){
-            console.error(e)
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback',{state: ans}); 
-    }
 
     const handleClickRegenerate = () => {
         navigate('/interviewContent', {state: job}); 
     }
 
     useEffect(() => {
-        //이곳에 페이지 로딩시 api 호출
-    }, []);
+        const handleClickFeedBackCall = async() => {
+            try {
+                setIsLoading(true);
+                const message = await FeedBackGPT({job, ans, question});
+                setData(JSON.parse(message));
+                console.log(message);
+            } catch (e){
+                console.error(e)
+            } finally {
+                setIsLoading(false);
+            }
+        };
+    
+        handleClickFeedBackCall();
+    }, [ans, job, question]);
+    
+
 
     return (
         <>
             <BodyContent>
                 {!isLoading && (
                     <>
-                        <div>{data?.response}</div>
-                        <div>사용자 답변 : {ans}</div>
-                        <div>수정된 답변 : {ans}</div>
+                        <div>질문 : {question}</div>
+                        <br />
+                        <div>사용자 답변 : {data?.response}</div>
+                        <br />
+                        <div>A.I 조언 : {data?.added}</div>
                         <Btnarea>
                             <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
                             <Button>공유?</Button>
-                            <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
+                            <Button onClick={() => handleClickRegenerate()}>꼬리질문 (지금은 재생성)</Button>
                         </Btnarea>
                         
                     </>

@@ -50,7 +50,7 @@ const InterviewContent = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback', {state: {ans: ans, job: job}});
+        navigate('/interviewfeedback', {state: {ans: ans, job: job, question: data?.response}});
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
