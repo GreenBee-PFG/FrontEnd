@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FeedBackGPT } from "../api/feedbackapt"
+import { FeedBackGPT } from "../api/feedbackapi"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";

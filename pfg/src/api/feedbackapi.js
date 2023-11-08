@@ -11,7 +11,7 @@ export const FeedBackGPT = async ({ job, ans, question}) => {
             2.User enters interview questions.
             3.The user enters the answer to the question.
             4. Correct any typos or incorrect parts in the user's answer.
-            5. Add words that can be added to the user's answer to Added.
+            5. Add a better answer than the user's answer to Added.
             6. Print using the output example.
 
             Also, do not print examples.
