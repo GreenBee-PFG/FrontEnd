@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
@@ -37,12 +37,18 @@ const handleMoveClick = (pagelink) => {
 	return (
 		<>
         <MainContent>
-            <Button onClick={() => handleMoveClick('board')}>게시판</Button>
+          <div>
+            <h1>게시판 관련</h1>
+            <Button onClick={() => handleMoveClick('board')}>게시판</Button>            
+            <Button onClick={() => handleMoveClick('detail/:id')}>게시글 페이지</Button>
             <Button onClick={() => handleMoveClick('createpost')}>글쓰기 페이지</Button>
             <Button onClick={() => handleMoveClick('updatepost')}>게시글 수정 페이지</Button>
-            <Button onClick={() => handleMoveClick('detail/:id')}>게시글 페이지</Button>
-            <Button onClick={() => handleMoveClick('devapi')}>gpt api 개발</Button>
-            <Button onClick={() => handleMoveClick('board')}>게시판</Button>
+          </div>
+          <div>
+            <h1>ChatGPT AI 관련</h1>
+            <Button onClick={() => handleMoveClick('devapi')}>api 개발 페이지</Button>
+            <Button onClick={() => handleMoveClick('interview')}>AI 인터뷰 페이지</Button>            
+          </div>
         </MainContent>
 
 		</>
