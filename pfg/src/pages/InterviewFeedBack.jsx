@@ -32,6 +32,10 @@ const InterviewFeedBack = () => {
         navigate('/interviewContent', {state: job}); 
     }
 
+    const handleClickTailQuestion = () => {
+        navigate('/interviewContent', {state: job}); 
+    }
+
     useEffect(() => {
         const handleClickFeedBackCall = async() => {
             try {
@@ -58,13 +62,13 @@ const InterviewFeedBack = () => {
                     <>
                         <div>질문 : {question}</div>
                         <br />
-                        <div>사용자 답변 : {data?.response}</div>
+                        <div>사용자 답변 : {ans}</div>
                         <br />
                         <div>A.I 조언 : {data?.added}</div>
                         <Btnarea>
                             <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
                             <Button>공유?</Button>
-                            <Button onClick={() => handleClickRegenerate()}>꼬리질문 (지금은 재생성)</Button>
+                            <Button onClick={() => handleClickTailQuestion()}>꼬리질문 생성</Button>
                         </Btnarea>
                         
                     </>
