@@ -1,24 +1,24 @@
-export const FeedBackGPT = async ({ job, ans, question}) => {
+export const GPTTailAPI = async ({ ans, job, question}) => {
     const messages = [
         {
             "role": "system",
-            "content": `You are the interviewer giving advice on answers to interview questions. It proceeds in the following order.`
+            "content": `You are the interviewer. It proceeds in the following order.`
         },
         {
             role: "user",
             content: `
-            1. The user enters a job position.
-            2. User enters interview questions.
-            3. User enters answers to interview questions.
-            4. Reference your answers to generate better answers to interview questions.
-            5. Print using the output example below.
+            1. The user enters the job position.
+            2.User enters interview questions.
+            3.The user enters the answer to the question.
+            4.Generate other interview questions based on the answers to the questions.
+            5. Using the output example, print only one question.
 
             Also, do not print examples.
             Translate into Korean and use the output in the following JSON format:
             
 
             {
-                response: [A better answer goes here.]
+                response: [The interview questions created are entered here.]
             }
             `
         },

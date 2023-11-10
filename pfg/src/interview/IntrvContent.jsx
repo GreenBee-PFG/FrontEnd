@@ -24,11 +24,7 @@ const Textarea = styled.textarea`
 `
 
 
-const Btnarea = styled.div`
- 
-`
-
-const InterviewContent = () => {
+const IntrvContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const job = location.state;
@@ -50,7 +46,7 @@ const InterviewContent = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        navigate('/intrvfeedback', {state: {ans: ans, job: job, question: data?.response}});
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
@@ -72,10 +68,11 @@ const InterviewContent = () => {
                             onChange={handleAnswerChange}
                             value={ans}
                         />
-                        <Btnarea>
+                        <br />
+                        <div>
                             <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
-                        </Btnarea>
+                        </div>
                         
                     </>
                 )}
@@ -86,4 +83,4 @@ const InterviewContent = () => {
     );
 }
   
-export default InterviewContent;
+export default IntrvContent;

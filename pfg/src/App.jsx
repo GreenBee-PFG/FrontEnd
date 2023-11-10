@@ -6,17 +6,23 @@ import styled from "styled-components"
 import Main from './pages/Main';
 import Board from './pages/Board';
 import NotFound from './pages/NotFound';
+
+//board
 import BoardDetail from "./pages/Detail";
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
-import AdminPage from "./pages/AdminPage";
-import DevApi from "./pages/DevApi";
-import InterviewMain from "./pages/InterviewMain";
-import InterviewContent from "./pages/InterviewContent";
-import InterviewFeedBack from "./pages/InterviewFeedBack";
-import InterviewTailQuestion from "./pages/InterviewTailQuestion";
 
-//Component
+//dev
+import DevApi from "./dev/DevApi";
+import AdminPage from "./pages/AdminPage";
+
+//Interview
+import Intrv from "./interview/Intrv";
+import IntrvContent from "./interview/IntrvContent";
+import IntrvFB from "./interview/IntrvFB";
+import IntrvTail from "./interview/IntrvTail";
+
+//ComponentS
 import Header from './component/Header';
 import Footer from './component/Footer';
 import config from "./config";
@@ -57,16 +63,20 @@ function App() {
           <AppRoutes>
             <Routes>
               <Route path="/" element={<Main />} />
+
               <Route path="/adminpage" element={<AdminPage />} />
-              <Route path="/board" element={<Board />}/>
               <Route path="/devapi" element={<DevApi />}/>
-              <Route path="/interview" element={<InterviewMain />}/>
-              <Route path="/interviewcontent" element={<InterviewContent />}/>
-              <Route path="/interviewfeedback" element={<InterviewFeedBack />}/>
-              <Route path="/interviewtailquestion" element={<InterviewTailQuestion />}/>
+
+              <Route path="/intrv" element={<Intrv />}/>
+              <Route path="/intrvcontent" element={<IntrvContent />}/>
+              <Route path="/intrvfeedback" element={<IntrvFB />}/>
+              <Route path="/intrvtail" element={<IntrvTail />}/>
+
+              <Route path="/board" element={<Board />}/>       
               <Route path="/detail/:id" element={<BoardDetail />} />
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/updatepost" element={<UpdatePost />} />
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppRoutes>

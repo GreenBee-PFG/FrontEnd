@@ -35,7 +35,7 @@ const handleMoveClick = (pagelink) => {
           <div>
             <h1>ChatGPT AI 관련</h1>
             <Button onClick={() => handleMoveClick('devapi')}>api 개발 페이지</Button>
-            <Button onClick={() => handleMoveClick('interview')}>AI 인터뷰 페이지</Button>            
+            <Button onClick={() => handleMoveClick('intrv')}>AI 인터뷰 페이지</Button>            
           </div>
         </MainContent>
 

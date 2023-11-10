@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CallGPT } from "../api/gpt"
+import { GPTTailAPI } from "../api/tailgptapi"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -28,12 +28,15 @@ const Btnarea = styled.div`
  
 `
 
-const InterviewTailQuestion = () => {
+const IntrvTail = () => {
     const navigate = useNavigate();
     const location = useLocation();
+
+    //preans = 사용자 답변, data?.added = ai 조언, job = 직무
     const preans = location.state.ans;
     const job = location.state.job;
-
+    const question = location.state.question;
+    
     const [data, setData] = useState("");
     const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +44,7 @@ const InterviewTailQuestion = () => {
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: job});
+            const message = await GPTTailAPI({prompt: job});
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
@@ -51,7 +54,7 @@ const InterviewTailQuestion = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        navigate('/interviewfeedback', {state: {ans : ans, job : job, question: question}});
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
@@ -86,4 +89,4 @@ const InterviewTailQuestion = () => {
     );
 }
   
-export default InterviewTailQuestion;
+export default IntrvTail;
