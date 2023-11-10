@@ -31,8 +31,9 @@ const InterviewFeedBack = () => {
         navigate('/interviewContent', {state: job}); 
     }
 
+    //ans = 사용자 답변, data?.added = ai 조언, job = 직무
     const handleClickTailQuestion = () => {
-        navigate('/interviewContent', {state: job}); 
+        navigate('/interviewtailquestion', {state: {ans : ans}}); 
     }
 
     useEffect(() => {

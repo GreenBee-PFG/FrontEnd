@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
 import preBtn from "../component/Button";
+import preBodyContent from "../component/BodyContent";
 
 const AdminPage = (props) => {
     const navigate = useNavigate();
@@ -11,11 +12,9 @@ const Button = styled(preBtn)`
     margin: 10px;
   `
 
-const MainContent = styled.div`
-    width: 100%;
+const MainContent = styled(preBodyContent)`
     margin: 3px;
     padding: 20px;
-    box-sizing: border-box;
     text-align: left;
 `
 
