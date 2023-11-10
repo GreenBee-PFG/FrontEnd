@@ -2,8 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components"
 
+//Pages
 import Main from './pages/Main';
 import Board from './pages/Board';
+import NotFound from './pages/NotFound';
 import BoardDetail from "./pages/Detail";
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
@@ -14,7 +16,7 @@ import InterviewContent from "./pages/InterviewContent";
 import InterviewFeedBack from "./pages/InterviewFeedBack";
 import InterviewTailQuestion from "./pages/InterviewTailQuestion";
 
-import NotFound from './pages/NotFound';
+//Component
 import Header from './component/Header';
 import Footer from './component/Footer';
 import config from "./config";

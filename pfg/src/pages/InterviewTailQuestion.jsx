@@ -31,7 +31,8 @@ const Btnarea = styled.div`
 const InterviewTailQuestion = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const job = location.state;
+    const preans = location.state.ans;
+    const job = location.state.job;
 
     const [data, setData] = useState("");
     const [ans, setAns] = useState("");

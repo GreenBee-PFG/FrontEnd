@@ -5,11 +5,16 @@ import { CallGPT } from "../api/gpt"
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
 import BodyCont from "../component/BodyContent";
-import StyledTextarea from "../component/Textarea";
 
-const Textarea = styled(StyledTextarea)`
+const Textarea = styled.textarea`
     width: 180px;
     height: 25px;
+    text-align: center;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 `
 
 const BodyContent = styled(BodyCont)`

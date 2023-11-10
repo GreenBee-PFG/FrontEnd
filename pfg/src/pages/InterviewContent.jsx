@@ -5,7 +5,6 @@ import { CallGPT } from "../api/gpt"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
-import preTextarea from "../component/Textarea";
 import preBodyContent from "../component/BodyContent"
 
 const BodyContent = styled(preBodyContent)`
@@ -13,10 +12,17 @@ const BodyContent = styled(preBodyContent)`
   justify-content: center;
   align-items: center;
 `
-const Textarea = styled(preTextarea)`
-  width: 70%;
-  height: 250px;
+const Textarea = styled.textarea`
+    width: 70%;
+    height: 250px;
+    text-align: center;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 `
+
 
 const Btnarea = styled.div`
  
