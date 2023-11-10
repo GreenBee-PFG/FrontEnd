@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from 'styled-components';
-import loading from "../asset/iconmonstr-loading-10-120.png"
+import loading from "../images/loading.png"
 
 const rotate = keyframes`
   0% {
@@ -22,16 +22,12 @@ const Rotate = styled.img`
     margin:0 auto;
 `
 
-
-
-
 function Spinner () {
     
     return(
         <>
         <Rotate src={loading} alt="로딩중" />
         </>
-        
     )
 }
 
