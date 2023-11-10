@@ -5,11 +5,10 @@ import { FeedBackGPT } from "../api/feedbackapi"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
+import preBodyContent from "../component/BodyContent";
 
-const BodyContent = styled.div`
+const BodyContent = styled(preBodyContent)`
   width: 80%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
