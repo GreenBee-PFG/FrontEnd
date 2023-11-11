@@ -9,7 +9,8 @@ export const CallGPT = async ({ prompt }) => {
             "content": `Translate into Korean and use the output in the following JSON format:
             {
                 response: [Your question should be entered here.]
-            }`
+            }
+            `
         },
         {
             "role": "user",

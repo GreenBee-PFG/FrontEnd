@@ -5,30 +5,26 @@ import { CallGPT } from "../api/gpt"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
+import preBodyContent from "../component/BodyContent"
 
-const BodyContent = styled.div`
+const BodyContent = styled(preBodyContent)`
   width: 80%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 const Textarea = styled.textarea`
-  text-align: center;
-  width: 70%;
-  height: 250px;
-  resize: none;
-  font-size: 16px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 70%;
+    height: 250px;
+    text-align: center;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 `
 
-const Btnarea = styled.div`
- 
-`
 
-const InterviewTailQuestion = () => {
+const IntrvContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const job = location.state;
@@ -50,7 +46,14 @@ const InterviewTailQuestion = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        if (ans.trim() ===""){
+            alert("답변을 입력해주세요.");
+            return;
+        }
+        else { 
+            navigate('/intrvfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        }
+       
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);
@@ -72,17 +75,19 @@ const InterviewTailQuestion = () => {
                             onChange={handleAnswerChange}
                             value={ans}
                         />
-                        <Btnarea>
+                        <br />
+                        <div>
                             <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
-                        </Btnarea>
+                        </div>
                         
                     </>
                 )}
                 {isLoading && <Spinner />}
+
             </BodyContent>
         </>
     );
 }
   
-export default InterviewTailQuestion;
+export default IntrvContent;

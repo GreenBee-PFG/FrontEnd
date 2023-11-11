@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CallGPT } from "../api/gpt"
+import { GPTTailAPI } from "../api/tailgptapi"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -28,19 +28,22 @@ const Btnarea = styled.div`
  
 `
 
-const InterviewContent = () => {
+const IntrvTail = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const job = location.state;
 
+    //preans = 사용자 답변, data?.added = ai 조언, job = 직무
+    const ans = location.state.ans;
+    const job = location.state.job;
+    
     const [data, setData] = useState("");
-    const [ans, setAns] = useState("");
+    const [tailans, setTailans] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: job});
+            const message = await GPTTailAPI({job, ans});
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
@@ -48,12 +51,16 @@ const InterviewContent = () => {
             setIsLoading(false);
         }
     };
+    const handleClickRegenerate = () => {
+        navigate('/intrvcontent', {state: job}); 
+    }
 
     const handleClickFeedBackCall = () => {
-        navigate('/interviewfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        navigate('/intrvfeedback', {state: {ans: tailans, job: job, question: data?.response}});
     }
+
     const handleAnswerChange = (e) => {
-        setAns(e.target.value);
+        setTailans(e.target.value);
       };
 
     useEffect(() => {
@@ -70,20 +77,19 @@ const InterviewContent = () => {
                             id="textarea_content"
                             placeholder="질문에 대한 답변을 적어주세요"
                             onChange={handleAnswerChange}
-                            value={ans}
+                            value={tailans}
                         />
                         <Btnarea>
-                            <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
+                            <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
                         </Btnarea>
                         
                     </>
                 )}
                 {isLoading && <Spinner />}
-
             </BodyContent>
         </>
     );
 }
   
-export default InterviewContent;
+export default IntrvTail;

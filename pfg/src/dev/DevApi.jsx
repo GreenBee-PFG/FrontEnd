@@ -4,23 +4,23 @@ import { CallGPT } from "../api/gpt"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
+import BodyCont from "../component/BodyContent";
 
-const BodyContent = styled.div`
+const Textarea = styled.textarea`
+    width: 180px;
+    height: 25px;
+    text-align: center;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+`
+
+const BodyContent = styled(BodyCont)`
   width: 80%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-const Textarea = styled.textarea`
-  text-align: center;
-  width: 180px;
-  height: 25px;
-  resize: none;
-  font-size: 16px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 `
 
 const DevApi = () => {

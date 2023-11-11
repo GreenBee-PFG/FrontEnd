@@ -5,20 +5,15 @@ import { FeedBackGPT } from "../api/feedbackapi"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
+import preBodyContent from "../component/BodyContent";
 
-const BodyContent = styled.div`
+const BodyContent = styled(preBodyContent)`
   width: 80%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 
-const Btnarea = styled.div`
- 
-`
-
-const InterviewFeedBack = () => {
+const IntrvFB = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const ans = location.state.ans;
@@ -29,11 +24,12 @@ const InterviewFeedBack = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClickRegenerate = () => {
-        navigate('/interviewContent', {state: job}); 
+        navigate('/intrvcontent', {state: job}); 
     }
 
+    //ans = 사용자 답변, data?.added = ai 조언, job = 직무
     const handleClickTailQuestion = () => {
-        navigate('/interviewContent', {state: job}); 
+        navigate('/intrvtail', {state: {ans : ans, job : job}}); 
     }
 
     useEffect(() => {
@@ -53,8 +49,6 @@ const InterviewFeedBack = () => {
         handleClickFeedBackCall();
     }, [ans, job, question]);
     
-
-
     return (
         <>
             <BodyContent>
@@ -64,12 +58,12 @@ const InterviewFeedBack = () => {
                         <br />
                         <div>사용자 답변 : {ans}</div>
                         <br />
-                        <div>A.I 조언 : {data?.added}</div>
-                        <Btnarea>
+                        <div>A.I 조언 : {data?.response}</div>
+                        <div>
                             <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
                             <Button>공유?</Button>
                             <Button onClick={() => handleClickTailQuestion()}>꼬리질문 생성</Button>
-                        </Btnarea>
+                        </div>
                         
                     </>
                 )}
@@ -80,4 +74,4 @@ const InterviewFeedBack = () => {
     );
 }
   
-export default InterviewFeedBack;
+export default IntrvFB;

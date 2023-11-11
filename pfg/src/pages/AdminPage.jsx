@@ -2,31 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
+import preBtn from "../component/Button";
+import preBodyContent from "../component/BodyContent";
 
 const AdminPage = (props) => {
     const navigate = useNavigate();
 
-const Button = styled.button`
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    color: 333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+const Button = styled(preBtn)`
     margin: 10px;
-  
-    &:hover {
-      color: white;
-      background-color: #555;
-    }
   `
 
-const MainContent = styled.div`
-    width: 100%;
+const MainContent = styled(preBodyContent)`
     margin: 3px;
     padding: 20px;
-    box-sizing: border-box;
     text-align: left;
 `
 
@@ -47,7 +35,7 @@ const handleMoveClick = (pagelink) => {
           <div>
             <h1>ChatGPT AI 관련</h1>
             <Button onClick={() => handleMoveClick('devapi')}>api 개발 페이지</Button>
-            <Button onClick={() => handleMoveClick('interview')}>AI 인터뷰 페이지</Button>            
+            <Button onClick={() => handleMoveClick('intrv')}>AI 인터뷰 페이지</Button>            
           </div>
         </MainContent>
 

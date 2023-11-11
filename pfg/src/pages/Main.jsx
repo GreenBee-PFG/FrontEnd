@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import sampleimg from "../images/samplebanner.png";
-import Button from "../component/Button";
 
-const BodyContent = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`
+import BodyContent from "../component/BodyContent";
+import Button from "../component/Button";
 
 const Title = styled.h1`
   font-size: 64px;
