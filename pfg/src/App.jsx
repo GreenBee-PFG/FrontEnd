@@ -13,7 +13,6 @@ import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
 
 //dev
-import DevApi from "./dev/DevApi";
 import AdminPage from "./pages/AdminPage";
 
 //Interview
@@ -65,7 +64,6 @@ function App() {
               <Route path="/" element={<Main />} />
 
               <Route path="/adminpage" element={<AdminPage />} />
-              <Route path="/devapi" element={<DevApi />}/>
 
               <Route path="/intrv" element={<Intrv />}/>
               <Route path="/intrvcontent" element={<IntrvContent />}/>
