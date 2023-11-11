@@ -1,32 +1,28 @@
-export const GPTTailAPI = async ({ ans, job, question}) => {
+export const GPTTailAPI = async ({ ans, job}) => {
     const messages = [
         {
             "role": "system",
-            "content": `You are the interviewer. It proceeds in the following order.`
+            "content": `당신은 채용 담당관입니다. 다음의 순서로 진행됩니다.`
         },
         {
             role: "user",
             content: `
-            1. The user enters the job position.
-            2. The user enters the interview question.
-            3. The user will type an answer to the interview question.
-            4. Create other interview questions based on your answers to the interview questions you have entered.
-            5. However, it should not be similar to the interview questions you received.
-            6. Use an output example to output.
-
-            Also, do not print examples.
-            Translate into Korean and use the output in the following JSON format:
+            1. User가 직무를 입력합니다.
+            2. User가 질문받은 면접 질문에 대한 답변을 입력합니다.
+            4. User의 답변을 토대로 다른 면접 질문을 생성합니다.
+            5. 아래의 출력 예시를 이용하여 출력합니다.
+            
+            다음 JSON 출력 형식을 따르십시오.
             {
-                response: [Enter only one interview question here.]
+                response: [이곳에 생성된 면접 질문 하나만 출력합니다.]
             }
             `
         },
         {
             "role": "user",
             "content": `
-                user job: ${job}
-                interview questions: ${question}
-                user response: ${ans}
+                사용자 직무: ${job}
+                면접 질문에 대한 User의 답변: ${ans}
             `
         }
     ];

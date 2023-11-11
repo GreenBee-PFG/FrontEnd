@@ -29,7 +29,7 @@ const IntrvFB = () => {
 
     //ans = 사용자 답변, data?.added = ai 조언, job = 직무
     const handleClickTailQuestion = () => {
-        navigate('/intrvtail', {state: {preans : ans, job : job, question : question}}); 
+        navigate('/intrvtail', {state: {ans : ans, job : job}}); 
     }
 
     useEffect(() => {
