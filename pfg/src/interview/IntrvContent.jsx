@@ -46,7 +46,14 @@ const IntrvContent = () => {
     };
 
     const handleClickFeedBackCall = () => {
-        navigate('/intrvfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        if (ans.trim() ===""){
+            alert("답변을 입력해주세요.");
+            return;
+        }
+        else { 
+            navigate('/intrvfeedback', {state: {ans: ans, job: job, question: data?.response}});
+        }
+       
     }
     const handleAnswerChange = (e) => {
         setAns(e.target.value);

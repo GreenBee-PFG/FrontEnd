@@ -33,18 +33,17 @@ const IntrvTail = () => {
     const location = useLocation();
 
     //preans = 사용자 답변, data?.added = ai 조언, job = 직무
-    const preans = location.state.ans;
+    const ans = location.state.ans;
     const job = location.state.job;
     const question = location.state.question;
     
     const [data, setData] = useState("");
-    const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await GPTTailAPI({prompt: job});
+            const message = await GPTTailAPI({job, ans, question});
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
@@ -52,13 +51,13 @@ const IntrvTail = () => {
             setIsLoading(false);
         }
     };
+    const handleClickRegenerate = () => {
+        navigate('/intrvcontent', {state: job}); 
+    }
 
     const handleClickFeedBackCall = () => {
         navigate('/interviewfeedback', {state: {ans : ans, job : job, question: question}});
     }
-    const handleAnswerChange = (e) => {
-        setAns(e.target.value);
-      };
 
     useEffect(() => {
         handleClickAPICall();
@@ -70,14 +69,9 @@ const IntrvTail = () => {
                 {!isLoading && (
                     <>
                         <div>{data?.response}</div>
-                        <Textarea
-                            id="textarea_content"
-                            placeholder="질문에 대한 답변을 적어주세요"
-                            onChange={handleAnswerChange}
-                            value={ans}
-                        />
+
                         <Btnarea>
-                            <Button onClick={() => handleClickAPICall()}>Regenerate</Button>
+                            <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
                         </Btnarea>
                         

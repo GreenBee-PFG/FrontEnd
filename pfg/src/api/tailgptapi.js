@@ -8,17 +8,16 @@ export const GPTTailAPI = async ({ ans, job, question}) => {
             role: "user",
             content: `
             1. The user enters the job position.
-            2.User enters interview questions.
-            3.The user enters the answer to the question.
-            4.Generate other interview questions based on the answers to the questions.
-            5. Using the output example, print only one question.
+            2. The user enters the interview question.
+            3. The user will type an answer to the interview question.
+            4. Create other interview questions based on your answers to the interview questions you have entered.
+            5. However, it should not be similar to the interview questions you received.
+            6. Use an output example to output.
 
             Also, do not print examples.
             Translate into Korean and use the output in the following JSON format:
-            
-
             {
-                response: [The interview questions created are entered here.]
+                response: [Enter only one interview question here.]
             }
             `
         },
