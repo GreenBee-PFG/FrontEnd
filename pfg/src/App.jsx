@@ -61,11 +61,15 @@ function App() {
         <Content>
           <AppRoutes>
             <Routes>
+              {/*
               <Route path="/" element={<Main />} />
+              */}
+              <Route path="/" element={<Intrv />} />
 
               <Route path="/adminpage" element={<AdminPage />} />
-
+              
               <Route path="/intrv" element={<Intrv />}/>
+
               <Route path="/intrvcontent" element={<IntrvContent />}/>
               <Route path="/intrvfeedback" element={<IntrvFB />}/>
               <Route path="/intrvtail" element={<IntrvTail />}/>
