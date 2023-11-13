@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FeedBackGPT } from "../api/feedbackapi"
+import axios from 'axios';
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -48,6 +49,31 @@ const IntrvFB = () => {
     
         handleClickFeedBackCall();
     }, [ans, job, question]);
+
+    const handleShareClick = async () => {
+        const requestData = {
+            job: job,
+            question: question,
+            answer: ans,
+            feedback: data?.response
+        };
+    
+        try {
+            setIsLoading(true); // 로딩 상태 시작
+            const response = await axios.post('/api/interview-feedback', requestData);
+            if (response.status === 201) {
+                alert('면접 피드백이 성공적으로 공유되었습니다.');
+                navigate('/board'); // 게시판 경로로 이동
+            } else {
+                alert('면접 피드백을 공유하는 데 문제가 발생했습니다.');
+            }
+        } catch (error) {
+            console.error('면접 피드백 공유 중 오류 발생: ', error);
+            alert('면접 피드백 공유 중 오류가 발생했습니다.');
+        } finally {
+            setIsLoading(false); // 로딩 상태 종료
+        }
+    };
     
     return (
         <>
@@ -61,7 +87,7 @@ const IntrvFB = () => {
                         <div>A.I 조언 : {data?.response}</div>
                         <div>
                             <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
-                            <Button>공유?</Button>
+                            <Button onClick={() => handleShareClick()}>공유</Button>
                             <Button onClick={() => handleClickTailQuestion()}>꼬리질문 생성</Button>
                         </div>
                         

@@ -64,6 +64,7 @@ const CreatePost = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
+  
   const handleInputClick = async () => {
     if (title.trim() === "" || content.trim() === "") {
       alert("제목과 내용을 모두 입력해주세요.");
@@ -78,7 +79,7 @@ const CreatePost = () => {
       alert("내용은 8000자 이하여야 합니다.");
       return;
     }
-
+    
     const requestData = { title, content };
 
     try {
