@@ -18,6 +18,7 @@ const Description = styled.p`
 
 const Inner = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
@@ -28,16 +29,17 @@ const Inner = styled.div`
 const Banner = styled.div`
   width: 100%;
   height: auto;
-  max-width: 100%;
+  max-width: 1100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
   background-image: url(${sampleimg});
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 10%;
 `
 
 const BoardListWrapper = styled.div`
