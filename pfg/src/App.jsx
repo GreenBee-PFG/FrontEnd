@@ -61,10 +61,7 @@ function App() {
         <Content>
           <AppRoutes>
             <Routes>
-              {/*
               <Route path="/" element={<Main />} />
-              */}
-              <Route path="/" element={<Intrv />} />
 
               <Route path="/adminpage" element={<AdminPage />} />
               
