@@ -39,12 +39,13 @@ const Banner = styled.div `
   background-image: url(${sampleimg});
   display: flex;
   flex-direction: column;
-  position: absolute;
   top: 10%;
 `
 
 const BoardListWrapper = styled.div `
   width: 100%;
+  max-width: 1100px;
+  margin: auto;
 `
 
 const BoardListUl = styled.ul `
@@ -120,9 +121,9 @@ const Main = () => {
       };
     getBoardList();
     }, [currentPage]);
-    
+
     const handleMoveBannerBtn = () => {
-        navigate(`/intrv`);
+      navigate(`/intrv`);
     };
 
     return (
