@@ -38,6 +38,31 @@ const AIQuestion = styled.div`
     }
 `
 
+const UserAnswer = styled.div`
+    width : 60%;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+    text-align: left;
+
+    &:after {
+        content: "Me";
+        color: #343439;
+        background-color: #fff;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 27px;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        position: absolute;
+        top: 7px;
+        right: -10%;
+    }
+`
+
 const IntrvFB = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -105,9 +130,9 @@ const IntrvFB = () => {
                 {!isLoading && (
                     <>
                         <AIQuestion>{question}</AIQuestion>
+                        <UserAnswer>{ans}</UserAnswer>
                         <AIQuestion>{data?.response}</AIQuestion>
                         <br />
-                        <div>사용자 답변 : {ans}</div>
                         <br />
                         <div>
                             <Button onClick={() => handleClickRegenerate()} style={{margin: "5px"}}>질문 재생성</Button>

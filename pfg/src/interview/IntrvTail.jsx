@@ -22,6 +22,10 @@ const Textarea = styled.textarea`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+
+  &::placeholder {
+    text-align: left;
+}
 `
 
 const Btnarea = styled.div`
