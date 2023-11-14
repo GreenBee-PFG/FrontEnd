@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { gptAPI } from "../api/gptAPI"
@@ -60,7 +60,7 @@ const IntrvContent = () => {
     const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleClickAPICall = async() => {
+    const handleClickAPICall = useCallback(async() => {
         try {
             setIsLoading(true);
             const message = await gptAPI({ job: job, ans: null, question: null, value: 1  });
@@ -70,7 +70,7 @@ const IntrvContent = () => {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [job]);
 
     const handleClickFeedBackCall = () => {
         if (ans.trim() ===""){
@@ -88,7 +88,7 @@ const IntrvContent = () => {
 
     useEffect(() => {
         handleClickAPICall();
-    }, []);
+    }, [handleClickAPICall]);
 
     return (
         <>

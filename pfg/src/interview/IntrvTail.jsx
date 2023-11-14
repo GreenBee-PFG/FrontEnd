@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { gptAPI } from "../api/gptAPI"
@@ -64,7 +64,7 @@ const IntrvTail = () => {
     const [tailans, setTailans] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleClickAPICall = async() => {
+    const handleClickAPICall = useCallback(async() => {
         try {
             setIsLoading(true);
             const message = await gptAPI({ job: job, ans: ans, question: null, value: 3 });
@@ -74,7 +74,7 @@ const IntrvTail = () => {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [job, ans]);
     const handleClickRegenerate = () => {
         navigate('/intrvcontent', {state: job}); 
     }
@@ -89,7 +89,7 @@ const IntrvTail = () => {
 
     useEffect(() => {
         handleClickAPICall();
-    }, []);
+    }, [handleClickAPICall]);
 
     return (
         <>
