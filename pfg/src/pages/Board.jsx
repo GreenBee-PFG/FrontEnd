@@ -6,23 +6,25 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 800px;
   margin: 0 auto;
+  position: absolute;
+  top: 8%;
 `
 const HeadContainer = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center; 
+  border-bottom: 3px solid #ccc;
+  margin-bottom: 10px;
 `
 
 const Title = styled.h1`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `
 
 const BoardItem = styled.div`
-  margin-bottom: 10px;
-  padding: 10px;
-  height: fit-content;
-  background-color: #f0f0f0;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
 `
