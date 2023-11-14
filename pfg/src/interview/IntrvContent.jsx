@@ -104,10 +104,9 @@ const IntrvContent = () => {
                         />
                         <br />
                         <div>
-                            <Button onClick={() => handleClickAPICall()} style={{margin: "10px"}}>질문 재생성</Button>
-                            <Button onClick={() => handleClickFeedBackCall()}>AI 피드백</Button>
+                            <Button onClick={() => handleClickAPICall()} style={{margin: "5px"}}>질문 재생성</Button>
+                            <Button onClick={() => handleClickFeedBackCall()} style={{margin: "5px"}}>AI 피드백</Button>
                         </div>
-                        
                     </>
                 )}
                 {isLoading && <Spinner />}

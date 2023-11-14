@@ -28,6 +28,30 @@ const Btnarea = styled.div`
  
 `
 
+const AIQuestion = styled.div`
+    width : 60%;
+    padding: 10px;
+    margin: 50px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+    text-align: left;
+
+    &:after {
+        content: "AI";
+        color: #fff;
+        background-color: #343439;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 27px;
+        border-radius: 50px;
+        position: absolute;
+        top: 7px;
+        left: -10%;
+    }
+`
+
 const IntrvTail = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -72,7 +96,7 @@ const IntrvTail = () => {
             <BodyContent>
                 {!isLoading && (
                     <>
-                        <div>{data?.response}</div>
+                        <AIQuestion>{data?.response}</AIQuestion>
                         <Textarea
                             id="textarea_content"
                             placeholder="질문에 대한 답변을 적어주세요"
@@ -80,8 +104,8 @@ const IntrvTail = () => {
                             value={tailans}
                         />
                         <Btnarea>
-                            <Button onClick={() => handleClickRegenerate()}>질문 재생성</Button>
-                            <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
+                            <Button onClick={() => handleClickRegenerate()} style={{margin: "5px"}}>질문 재생성</Button>
+                            <Button onClick={() => handleClickFeedBackCall()} style={{margin: "5px"}}>A.I FeedBack</Button>
                         </Btnarea>
                         
                     </>

@@ -14,6 +14,30 @@ const BodyContent = styled(preBodyContent)`
   align-items: center;
 `
 
+const AIQuestion = styled.div`
+    width : 60%;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+    text-align: left;
+
+    &:after {
+        content: "AI";
+        color: #fff;
+        background-color: #343439;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 27px;
+        border-radius: 50px;
+        position: absolute;
+        top: 7px;
+        left: -10%;
+    }
+`
+
 const IntrvFB = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -80,15 +104,15 @@ const IntrvFB = () => {
             <BodyContent>
                 {!isLoading && (
                     <>
-                        <div>질문 : {question}</div>
+                        <AIQuestion>{question}</AIQuestion>
+                        <AIQuestion>{data?.response}</AIQuestion>
                         <br />
                         <div>사용자 답변 : {ans}</div>
                         <br />
-                        <div>A.I 조언 : {data?.response}</div>
                         <div>
-                            <Button onClick={() => handleClickRegenerate()}>질문 재생성</Button>
-                            <Button>공유?</Button>
-                            <Button onClick={() => handleClickTailQuestion()}>꼬리질문 생성</Button>
+                            <Button onClick={() => handleClickRegenerate()} style={{margin: "5px"}}>질문 재생성</Button>
+                            <Button onClick={() => handleShareClick()} style={{margin: "5px"}}>공유</Button>
+                            <Button onClick={() => handleClickTailQuestion()} style={{margin: "5px"}}>꼬리질문 생성</Button>
                         </div>
                         
                     </>
