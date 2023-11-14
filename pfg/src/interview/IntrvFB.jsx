@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FeedBackGPT } from "../api/feedbackapi"
+import { gptAPI } from "../api/gptAPI"
 import axios from 'axios';
 
 import Spinner from "../component/Spinner";
@@ -61,7 +61,7 @@ const IntrvFB = () => {
         const handleClickFeedBackCall = async() => {
             try {
                 setIsLoading(true);
-                const message = await FeedBackGPT({job, ans, question});
+                const message = await gptAPI({job: job, ans: ans, question: question, value: 2});
                 setData(JSON.parse(message));
                 console.log(message);
             } catch (e){

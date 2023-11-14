@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CallGPT } from "../api/gpt"
+import { gptAPI } from "../api/gptAPI"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -63,7 +63,7 @@ const IntrvContent = () => {
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: job});
+            const message = await gptAPI({ job: job, ans: null, question: null, value: 1  });
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)

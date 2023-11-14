@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { GPTTailAPI } from "../api/tailgptapi"
+import { gptAPI } from "../api/gptAPI"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -67,7 +67,7 @@ const IntrvTail = () => {
     const handleClickAPICall = async() => {
         try {
             setIsLoading(true);
-            const message = await GPTTailAPI({job, ans});
+            const message = await gptAPI({ job: job, ans: ans, question: null, value: 3 });
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
