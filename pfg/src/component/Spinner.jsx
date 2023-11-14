@@ -1,8 +1,8 @@
 import React from "react";
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import loading from "../images/loading.png"
 
-const rotate = keyframes`
+const rotate = keyframes `
   0% {
     transform: rotate(0deg);
   }
@@ -14,7 +14,7 @@ const rotate = keyframes`
   }
 `
 
-const Rotate = styled.img`
+const Rotate = styled.img `
     animation: ${rotate} 4s infinite linear reverse;
     width:80px;
     height:80px;
@@ -22,13 +22,11 @@ const Rotate = styled.img`
     margin:0 auto;
 `
 
-function Spinner () {
-    
-    return(
-        <>
-        <Rotate src={loading} alt="로딩중" />
-        </>
-    )
+function Spinner() {
+    return (<> < Rotate src = {
+        loading
+    }
+    alt = "로딩중" /> </>)
 }
 
 export default Spinner;

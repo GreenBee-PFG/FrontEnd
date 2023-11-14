@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import config from "../config";
 
 /* gray #343439 */
-const StyledHeader = styled.div`
+const StyledHeader = styled.div `
   position: fixed;
   top: 0;
   align-items: center;
@@ -13,16 +13,10 @@ const StyledHeader = styled.div`
   display: flex;
   height: ${config.HeaderHeight};
   width: 100%;
-  z-index: 9999; /* 필요에 따라 적절한 z-index 값을 설정하세요 */
+  z-index: 9999;
 `
 
-const Menu = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-`
-
-const Headerdiv = styled.div`
+const Headerdiv = styled.div `
   display: flex;
   width: 100%;
   height: 100%;
@@ -30,7 +24,7 @@ const Headerdiv = styled.div`
   margin: 0 auto;
 `
 
-const Logo = styled.h1`
+const Logo = styled.h1 `
   color: white;
   text-decoration: none;
   margin: auto;
@@ -39,19 +33,22 @@ const Logo = styled.h1`
 
 function Header() {
 
-  return (
-    <StyledHeader>
-      <Headerdiv>
-        <Logo>
-          <NavLink to="/" style={{ color: "white", textDecoration: "none" }}>
-            PFG
-          </NavLink>
-        </Logo>
-        <Menu>
-        </Menu>
-      </Headerdiv>
-    </StyledHeader>
-  );
+    return (
+        <StyledHeader>
+            <Headerdiv>
+                <Logo>
+                    <NavLink
+                        to="/"
+                        style={{
+                            color: "white",
+                            textDecoration: "none"
+                        }}>
+                        TalkMate
+                    </NavLink>
+                </Logo>
+            </Headerdiv>
+        </StyledHeader>
+    );
 }
 
 export default Header;

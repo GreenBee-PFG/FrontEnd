@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
-const BodyContent = styled.div`
+const BodyContent = styled.div `
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -10,11 +10,11 @@ const BodyContent = styled.div`
   align-items: center;
 `
 
-const OccupationField = styled.div`
+const OccupationField = styled.div `
   display: flex;
 `
 
-const Textarea = styled.textarea`
+const Textarea = styled.textarea `
   text-align: center;
   width: 200px;
   height: 25px;
@@ -24,7 +24,8 @@ const Textarea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 5px;
 `
-const Button = styled.button`
+
+const Button = styled.button `
   margin-left: 10px;
   padding: 10px 20px;
   background-color: #f0f0f0;
@@ -40,7 +41,7 @@ const Button = styled.button`
   }
 `
 
-const Hidden = styled.h1`
+const Hidden = styled.h1 `
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   width: 1px;
@@ -51,7 +52,7 @@ const Hidden = styled.h1`
   position: absolute;
 `
 
-const AiWrapper = styled.div`
+const AiWrapper = styled.div `
   margin-bottom: 20px;
   position: relative;
 
@@ -70,7 +71,7 @@ const AiWrapper = styled.div`
   }
 `
 
-const AiText = styled.p`
+const AiText = styled.p `
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -82,44 +83,42 @@ const Intrv = () => {
 
     const handleJobChange = (e) => {
         setJob(e.target.value);
-      };
+    };
 
     const handleClickPlay = () => {
-        if (job.trim() ===""){
+        if (job.trim() === "") {
             alert("직무를 입력해주세요.");
             return;
-        }
-        else {
-            navigate('/intrvcontent', {state: job});      
+        } else {
+            navigate('/intrvcontent', {state: job});
         }
     };
 
     return (
-        <>
-            <BodyContent>
-                <Hidden>A.I 면접 질문 생성기</Hidden>
-                <AiWrapper>
-                  <AiText>당신의 직무를 입력해주세요</AiText>
-                </AiWrapper>
-                <OccupationField>
-                  <Textarea
-                      id="textarea_content"
-                      placeholder="직무를 입력해주세요"
-                      onChange={handleJobChange}
-                      onKeyPress={(event) => {
-                          if (event.key === 'Enter') {
-                              event.preventDefault();
-                          }
-                      }}
-                      maxLength={14}
-                      value={job}
-                  />
-                  <br />
-                  <Button onClick={() => handleClickPlay()}>면접 보기</Button>
-                </OccupationField>
-            </BodyContent>
+        <> 
+          <BodyContent> 
+            <Hidden>A.I 면접 질문 생성기</Hidden>
+            <AiWrapper>
+                <AiText>당신의 직무를 입력해주세요</AiText>
+            </AiWrapper>
+            <OccupationField>
+              <Textarea
+                  id="textarea_content"
+                  placeholder="직무를 입력해주세요"
+                  onChange={handleJobChange}
+                  onKeyPress={(event) => {
+                      if (event.key === 'Enter') {
+                          event.preventDefault();
+                      }
+                  }}
+                  maxLength={14}
+                  value={job}/>
+              <br/>
+              <Button onClick={() => handleClickPlay()}>면접 보기</Button>
+            </OccupationField>
+          </BodyContent>
         </>
     );
-  }
-  
-  export default Intrv;
+}
+
+export default Intrv;

@@ -5,7 +5,7 @@ const info = "infoupdate-board";
 
 const value = {
     HeaderHeight,
-    FooterHeight, 
+    FooterHeight,
     BodyWidth,
     info
 };

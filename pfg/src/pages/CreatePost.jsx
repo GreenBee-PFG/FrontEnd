@@ -7,6 +7,7 @@ const Container = styled.div`
   width: 800px;
   margin: 0 auto;
 `
+
 const HeadContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -64,7 +65,6 @@ const CreatePost = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
-  
   const handleInputClick = async () => {
     if (title.trim() === "" || content.trim() === "") {
       alert("제목과 내용을 모두 입력해주세요.");

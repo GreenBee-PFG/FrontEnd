@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import styled from "styled-components"
 
 //Pages
@@ -23,14 +23,14 @@ import Header from './component/Header';
 import Footer from './component/Footer';
 import config from "./config";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   display: flex;
   flex-direction: column;
   height: auto;
   min-height: 100vh;
 `
 
-const Content = styled.div`
+const Content = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +43,7 @@ const Content = styled.div`
   min-height: calc(100vh - ${config.HeaderHeight});
 `
 
-const AppRoutes = styled.div`
+const AppRoutes = styled.div `
   width: 100%;
   display: flex;
   height: auto;
@@ -54,24 +54,24 @@ function App() {
   return (
     <Wrapper>
       <BrowserRouter>
-        <Header />
-        <Content>
-          <AppRoutes>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/intrv" element={<Intrv />}/>
-              <Route path="/intrvcontent" element={<IntrvContent />}/>
-              <Route path="/intrvfeedback" element={<IntrvFB />}/>
-              <Route path="/intrvtail" element={<IntrvTail />}/>
-              <Route path="/board" element={<Board />}/>       
-              <Route path="/detail/:id" element={<BoardDetail />} />
-              <Route path="/createpost" element={<CreatePost />} />
-              <Route path="/updatepost" element={<UpdatePost />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AppRoutes>
-        </Content>
-        <Footer />
+          <Header/>
+          <Content>
+              <AppRoutes>
+                  <Routes>
+                      <Route path="/" element={<Main />}/>
+                      <Route path="/intrv" element={<Intrv />}/>
+                      <Route path="/intrvcontent" element={<IntrvContent />}/>
+                      <Route path="/intrvfeedback" element={<IntrvFB />}/>
+                      <Route path="/intrvtail" element={<IntrvTail />}/>
+                      <Route path="/board" element={<Board />}/>
+                      <Route path="/detail/:id" element={<BoardDetail />}/>
+                      <Route path="/createpost" element={<CreatePost />}/>
+                      <Route path="/updatepost" element={<UpdatePost />}/>
+                      <Route path="*" element={<NotFound />}/>
+                  </Routes>
+              </AppRoutes>
+          </Content>
+          <Footer/>
       </BrowserRouter>
     </Wrapper>
   );

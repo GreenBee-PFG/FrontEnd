@@ -77,7 +77,6 @@ const IntrvFB = () => {
         navigate('/intrvcontent', {state: job}); 
     }
 
-    //ans = 사용자 답변, data?.added = ai 조언, job = 직무
     const handleClickTailQuestion = () => {
         navigate('/intrvtail', {state: {ans : ans, job : job}}); 
     }
@@ -142,7 +141,6 @@ const IntrvFB = () => {
                     </>
                 )}
                 {isLoading && <Spinner />}
-
             </BodyContent>
         </>
     );

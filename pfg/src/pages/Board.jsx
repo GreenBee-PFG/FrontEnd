@@ -94,8 +94,6 @@ const Board = () => {
     navigate(`/detail/${id}`);
   };
 
- 
-
   return (
     <Container>
       <HeadContainer>

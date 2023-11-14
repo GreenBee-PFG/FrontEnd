@@ -110,7 +110,6 @@ const IntrvContent = () => {
                     </>
                 )}
                 {isLoading && <Spinner />}
-
             </BodyContent>
         </>
     );

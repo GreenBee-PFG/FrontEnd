@@ -6,14 +6,14 @@ import { gptAPI } from "../api/gptAPI"
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
 
-const BodyContent = styled.div`
+const BodyContent = styled.div `
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `
-const Textarea = styled.textarea`
+const Textarea = styled.textarea `
   width: 70%;
   height: 250px;
   resize: none;
@@ -27,11 +27,7 @@ const Textarea = styled.textarea`
 }
 `
 
-const Btnarea = styled.div`
- 
-`
-
-const AIQuestion = styled.div`
+const AIQuestion = styled.div `
     width : 60%;
     padding: 10px;
     margin: 50px;
@@ -59,7 +55,6 @@ const IntrvTail = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    //preans = 사용자 답변, data?.added = ai 조언, job = 직무
     const ans = location.state.ans;
     const job = location.state.job;
     
@@ -106,11 +101,10 @@ const IntrvTail = () => {
                             onChange={handleAnswerChange}
                             value={tailans}
                         />
-                        <Btnarea>
+                        <div>
                             <Button onClick={() => handleClickRegenerate()} style={{margin: "5px"}}>질문 재생성</Button>
                             <Button onClick={() => handleClickFeedBackCall()} style={{margin: "5px"}}>A.I FeedBack</Button>
-                        </Btnarea>
-                        
+                        </div>
                     </>
                 )}
                 {isLoading && <Spinner />}
