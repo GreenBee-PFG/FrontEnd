@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {useNavigate} from 'react-router-dom';
-import sampleimg from "../images/samplebanner.png";
+import axios from 'axios';
 
+import sampleimg from "../images/samplebanner.png";
 import BodyContent from "../component/BodyContent";
 import Button from "../component/Button";
 
@@ -88,7 +89,38 @@ const HeaderTitle = styled.div `
 
 const Main = () => {
     const navigate = useNavigate();
+    const [data, setData] = useState([]);
+    const [totalIds, setTotalIds] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
+    useEffect(() => {
+      console.log(totalIds);
+  }, [totalIds]);
+
+  useEffect(() => {
+    const getTotalIds = async () => {
+        let response = await axios.get("/api/total-ids");
+        const data = parseInt(response.headers.totalcount, 10);
+        console.log(data);
+        setTotalIds(data || 0);
+    };
+    getTotalIds();
+  }, []);
+
+  useEffect(() => {
+      setCurrentPage(0);
+  }, []);
+
+  useEffect(() => {
+    const getBoardList = async () => {
+        console.log('getBoardList()');
+        let response = await axios.get(`/api/board-list?pageNumber=${currentPage}`);
+        console.log('main/response: ', response);
+        setData(response.data.data || []);
+      };
+    getBoardList();
+    }, [currentPage]);
+    
     const handleMoveBannerBtn = () => {
         navigate(`/intrv`);
     };
@@ -109,10 +141,12 @@ const Main = () => {
                     <HeaderTitle>제 목</HeaderTitle>
                 </MainHeader>
                 <BoardListUl>
-                    <BoardList>
-                        <ListNum>1</ListNum>
-                        <ListTitle>테스트</ListTitle>
-                    </BoardList>
+                    {data.map((board, index) => (
+                        <BoardList key={board.id}>
+                            <ListNum>{index + 1}</ListNum>
+                            <ListTitle>{board.job + ") " + board.question}</ListTitle>
+                        </BoardList>
+                    ))}
                 </BoardListUl>
             </BoardListWrapper>
         </BodyContent>
