@@ -121,9 +121,13 @@ const Detail = () => {
         <Title>{job}) {question}</Title>
       <BoardItem>
         <Content>
-          {answer}
+          <div>
+            사용자 답변 :{answer}
+          </div>
           <br />
-          {feedback}
+          <div>
+            {feedback}
+          </div>          
         </Content>
       </BoardItem>
     </Container>

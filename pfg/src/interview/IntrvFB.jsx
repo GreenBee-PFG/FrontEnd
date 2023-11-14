@@ -139,7 +139,6 @@ const IntrvFB = () => {
                             <Button onClick={() => handleShareClick()} style={{margin: "5px"}}>공유</Button>
                             <Button onClick={() => handleClickTailQuestion()} style={{margin: "5px"}}>꼬리질문 생성</Button>
                         </div>
-                        
                     </>
                 )}
                 {isLoading && <Spinner />}

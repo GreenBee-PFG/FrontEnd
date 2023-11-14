@@ -12,9 +12,6 @@ import BoardDetail from "./pages/Detail";
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
 
-//dev
-import AdminPage from "./pages/AdminPage";
-
 //Interview
 import Intrv from "./interview/Intrv";
 import IntrvContent from "./interview/IntrvContent";
@@ -62,20 +59,14 @@ function App() {
           <AppRoutes>
             <Routes>
               <Route path="/" element={<Main />} />
-
-              <Route path="/adminpage" element={<AdminPage />} />
-              
               <Route path="/intrv" element={<Intrv />}/>
-
               <Route path="/intrvcontent" element={<IntrvContent />}/>
               <Route path="/intrvfeedback" element={<IntrvFB />}/>
               <Route path="/intrvtail" element={<IntrvTail />}/>
-
               <Route path="/board" element={<Board />}/>       
               <Route path="/detail/:id" element={<BoardDetail />} />
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/updatepost" element={<UpdatePost />} />
-
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppRoutes>

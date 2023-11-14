@@ -14,7 +14,6 @@ const BodyContent = styled.div`
   align-items: center;
 `
 const Textarea = styled.textarea`
-  text-align: center;
   width: 70%;
   height: 250px;
   resize: none;

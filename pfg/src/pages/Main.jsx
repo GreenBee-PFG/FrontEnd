@@ -97,8 +97,8 @@ const Main = () => {
     <BodyContent>
       <Banner>
         <Inner>
-          <Title>토크메이트</Title>
-          <Description>AI 기반 면접 준비 및 직무 커뮤니티</Description>
+          <Title>TalkMate</Title>
+          <Description>A.I 기반 면접 준비 서비스</Description>
           <Button onClick={handleMoveBannerBtn}>AI 면접 보기</Button>
         </Inner>
       </Banner>
