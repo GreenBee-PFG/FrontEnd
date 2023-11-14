@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { GPTTailAPI } from "../api/tailgptapi"
+import { gptAPI } from "../api/gptAPI"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -68,17 +68,17 @@ const IntrvTail = () => {
     const [tailans, setTailans] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleClickAPICall = async() => {
+    const handleClickAPICall = useCallback(async() => {
         try {
             setIsLoading(true);
-            const message = await GPTTailAPI({job, ans});
+            const message = await gptAPI({ job: job, ans: ans, question: null, value: 3 });
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [job, ans]);
     const handleClickRegenerate = () => {
         navigate('/intrvcontent', {state: job}); 
     }
@@ -93,7 +93,7 @@ const IntrvTail = () => {
 
     useEffect(() => {
         handleClickAPICall();
-    }, []);
+    }, [handleClickAPICall]);
 
     return (
         <>

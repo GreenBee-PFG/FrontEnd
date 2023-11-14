@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CallGPT } from "../api/gpt"
+import { gptAPI } from "../api/gptAPI"
 
 import Spinner from "../component/Spinner";
 import Button from "../component/Button";
@@ -60,17 +60,17 @@ const IntrvContent = () => {
     const [ans, setAns] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleClickAPICall = async() => {
+    const handleClickAPICall = useCallback(async() => {
         try {
             setIsLoading(true);
-            const message = await CallGPT({prompt: job});
+            const message = await gptAPI({ job: job, ans: null, question: null, value: 1  });
             setData(JSON.parse(message));
         } catch (e){
             console.error(e)
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [job]);
 
     const handleClickFeedBackCall = () => {
         if (ans.trim() ===""){
@@ -88,7 +88,7 @@ const IntrvContent = () => {
 
     useEffect(() => {
         handleClickAPICall();
-    }, []);
+    }, [handleClickAPICall]);
 
     return (
         <>
