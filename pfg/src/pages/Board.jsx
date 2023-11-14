@@ -65,7 +65,7 @@ const Board = () => {
       let response = await axios.get("/api/total-ids");
       const data = parseInt(response.headers.totalcount, 10);
       console.log(data);
-      setTotalIds = data||0;
+      setTotalIds(data || 0);
     };
     getTotalIds();
   }, []);
@@ -102,7 +102,7 @@ const Board = () => {
       </HeadContainer>
       {data.map(board => (
         <BoardItem key={board.id} onClick={() => handleBoardItemClick(board.id)}>
-          <BoardTitle>{board.title}</BoardTitle>
+          <BoardTitle>{board.job+") "+board.question}</BoardTitle>
         </BoardItem>
       ))}
     </Container>

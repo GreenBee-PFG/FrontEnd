@@ -68,8 +68,10 @@ const DeleteButton = styled(Link)`
 `
 
 const Detail = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [job, setJob] = useState("");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [feedback, setFeedback] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -101,8 +103,10 @@ const Detail = () => {
       console.log('Detail/response: ', response);
       console.log('Detail/response.data: ', response.data);
       console.log('Detail/response.data.data: ', response.data.data);
-      setTitle(response.data.data.title);
-      setContent(response.data.data.content);
+      setJob(response.data.data.job);
+      setQuestion(response.data.data.question);
+      setAnswer(response.data.data.answer);
+      setFeedback(response.data.data.feedback);
     };
     getDetailBoard();
   }, [id]);
@@ -110,13 +114,17 @@ const Detail = () => {
   return (
     <Container>
         <ButtonContainer>
-          <LinkButton to={`/updatepost`} state={{ id: id, title: title, content: content }}>수정</LinkButton>
+          <LinkButton to={`/updatepost`} state={{ id: id, job: job, question: question, answer: answer, feedback: feedback }}>수정</LinkButton>
           <DeleteButton to="/board" onClick={handleDeleteBtnClick}>삭제</DeleteButton>
           <LinkButton to={"/board"} state={{}}>목록 보기</LinkButton>
         </ButtonContainer>
-      <Title>{title}</Title>
+        <Title>{job}) {question}</Title>
       <BoardItem>
-        <Content>{content}</Content>
+        <Content>
+          {answer}
+          <br />
+          {feedback}
+        </Content>
       </BoardItem>
     </Container>
   );
