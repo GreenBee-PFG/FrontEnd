@@ -60,7 +60,7 @@ const IntrvFB = () => {
                         <br />
                         <div>A.I 조언 : {data?.response}</div>
                         <div>
-                            <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
+                            <Button onClick={() => handleClickRegenerate()}>질문 재생성</Button>
                             <Button>공유?</Button>
                             <Button onClick={() => handleClickTailQuestion()}>꼬리질문 생성</Button>
                         </div>

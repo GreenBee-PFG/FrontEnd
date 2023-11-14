@@ -80,7 +80,7 @@ const IntrvTail = () => {
                             value={tailans}
                         />
                         <Btnarea>
-                            <Button onClick={() => handleClickRegenerate()}>Regenerate</Button>
+                            <Button onClick={() => handleClickRegenerate()}>질문 재생성</Button>
                             <Button onClick={() => handleClickFeedBackCall()}>A.I FeedBack</Button>
                         </Btnarea>
                         
