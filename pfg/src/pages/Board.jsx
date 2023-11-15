@@ -82,10 +82,6 @@ const Board = () => {
     getBoardList();
   }, [currentPage]);
 
-  const handleCreateBoardClick = () => {
-    navigate('/createpost');
-  };
-
   const handleBoardItemClick = (id) => {
     navigate(`/detail/${id}`);
   };
@@ -94,7 +90,6 @@ const Board = () => {
     <Container>
       <HeadContainer>
         <Title>게시판</Title>
-        <CreateButton onClick={handleCreateBoardClick}>글쓰기</CreateButton>
       </HeadContainer>
       {data.map(board => (
         <BoardItem key={board.id} onClick={() => handleBoardItemClick(board.id)}>

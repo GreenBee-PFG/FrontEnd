@@ -9,7 +9,6 @@ import NotFound from './pages/NotFound';
 
 //board
 import BoardDetail from "./pages/Detail";
-import CreatePost from "./pages/CreatePost";
 
 //Interview
 import Intrv from "./interview/Intrv";
@@ -64,7 +63,6 @@ function App() {
                       <Route path="/intrvtail" element={<IntrvTail />}/>
                       <Route path="/board" element={<Board />}/>
                       <Route path="/detail/:id" element={<BoardDetail />}/>
-                      <Route path="/createpost" element={<CreatePost />}/>
                       <Route path="*" element={<NotFound />}/>
                   </Routes>
               </AppRoutes>
