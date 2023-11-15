@@ -93,7 +93,7 @@ export const gptAPI = async ({ans, job, question, value}) => {
         )
     });
     const responseData = await response.json();
-    
+    console.log(">>responseData", responseData);
     const message = responseData
         .choices[0]
         .message

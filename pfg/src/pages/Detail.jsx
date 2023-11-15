@@ -75,6 +75,7 @@ const AIFeedBack = styled.div`
     border-radius: 10px;
     border: 1px solid #ccc;
     text-align: left;
+    color: black;
 `
 
 const UserAnswer = styled.div`
@@ -83,6 +84,7 @@ const UserAnswer = styled.div`
     border-radius: 10px;
     border: 1px solid #ccc;
     text-align: left;
+    color: black;
 
 `
 
