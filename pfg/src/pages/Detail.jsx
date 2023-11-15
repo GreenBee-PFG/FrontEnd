@@ -4,67 +4,86 @@ import {useNavigate, useParams, Link} from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div `
-  width: 800px;
-  margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 `
 
 const ButtonContainer = styled.div `
-  margin: auto;
-  display: flex;
-  justify-content: flex-end;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
 `
 
 const BoardItem = styled.div `
-  margin-bottom: 10px;
-  padding: 10px;
-  height: fit-content;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: fit-content;
+    background-color: #f0f0f0;
+    border-radius: 5px;
 `
 
 const Title = styled.h1 `
-  margin-bottom: 10px;
-  text-align: left;
-  font-size: 24px;
-  color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 24px;
+    color: #333;
 `
 
-const Content = styled.p `
-  margin-bottom: 20px;
-  text-align: left;
-  font-size: 18px;
-  color: #666;
+const Content = styled.div `
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 18px;
+    color: #666;
 `
 
 const LinkButton = styled(Link)`
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  color: #333;
-  border: none;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background-color: #ccc;
-  }
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #ccc;
+    }
 `
 
 const DeleteButton = styled(Link)`
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  color: #333;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background-color: #ccc;
-  }
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #ccc;
+    }
+`
+
+const AIFeedBack = styled.div`
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+`
+
+const UserAnswer = styled.div`
+    padding: 10px;
+    margin: 0 0 30px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+
 `
 
 const Detail = () => {
@@ -133,13 +152,10 @@ const Detail = () => {
             <Title>직무: {job}, 질문: {question}</Title>
             <BoardItem>
                 <Content>
-                    <div>
-                        사용자 답변 :{answer}
-                    </div>
-                    <br/>
-                    <div>
-                        {feedback}
-                    </div>
+                    사용자 답변
+                    <UserAnswer>{answer}</UserAnswer>
+                    AI 피드백
+                    <AIFeedBack>{feedback}</AIFeedBack>
                 </Content>
             </BoardItem>
         </Container>

@@ -35,7 +35,7 @@ const Banner = styled.div `
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   background-image: url(${sampleimg});
   display: flex;
   flex-direction: column;
@@ -43,12 +43,14 @@ const Banner = styled.div `
 `
 
 const BoardListWrapper = styled.div `
-  width: 100%;
+  width: 70%;
   max-width: 1100px;
   margin: auto;
 `
 
 const BoardListUl = styled.ul `
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 10px;
   padding: 0;
@@ -66,7 +68,6 @@ const ListNum = styled.div `
 `
 
 const ListTitle = styled.div `
-  width: 90%;
   padding: 10px 0;
 `
 
@@ -78,14 +79,20 @@ const MainHeader = styled.div `
   text-align: left;
   border-bottom: 1px solid #ccc;
 `
+
 const HeaderNum = styled.div `
   width: 10%;
   padding: 10px 0;
 `
+
 const HeaderTitle = styled.div `
   width: 90%;
   padding: 10px 0;
   text-align: center;
+`
+
+const BoardItem = styled.div`
+  cursor: pointer;
 `
 
 const Main = () => {
@@ -122,6 +129,10 @@ const Main = () => {
     getBoardList();
     }, [currentPage]);
 
+    const handleBoardItemClick = (id) => {
+      navigate(`/detail/${id}`);
+    };
+
     const handleMoveBannerBtn = () => {
       navigate(`/intrv`);
     };
@@ -135,8 +146,8 @@ const Main = () => {
                     <Button onClick={handleMoveBannerBtn}>AI 면접 보기</Button>
                 </Inner>
             </Banner>
-
             <BoardListWrapper>
+              <h2>최근 게시글</h2>
                 <MainHeader>
                     <HeaderNum>No</HeaderNum>
                     <HeaderTitle>제 목</HeaderTitle>
@@ -145,7 +156,9 @@ const Main = () => {
                     {data.map((board, index) => (
                         <BoardList key={board.id}>
                             <ListNum>{index + 1}</ListNum>
+                            <BoardItem key={board.id} onClick={() => handleBoardItemClick(board.id)}>
                             <ListTitle>{board.job + ") " + board.question}</ListTitle>
+                          </BoardItem>
                         </BoardList>
                     ))}
                 </BoardListUl>
