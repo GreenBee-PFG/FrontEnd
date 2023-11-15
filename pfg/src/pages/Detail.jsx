@@ -123,9 +123,6 @@ const Detail = () => {
     useEffect(() => {
         const getDetailBoard = async () => {
             let response = await axios.get(`/api/board-detail/${id}`);
-            console.log('Detail/response: ', response);
-            console.log('Detail/response.data: ', response.data);
-            console.log('Detail/response.data.data: ', response.data.data);
             setJob(response.data.data.job);
             setQuestion(response.data.data.question);
             setAnswer(response.data.data.answer);
@@ -137,15 +134,6 @@ const Detail = () => {
     return (
         <Container>
             <ButtonContainer>
-                <LinkButton
-                    to={`/updatepost`}
-                    state={{
-                        id: id,
-                        job: job,
-                        question: question,
-                        answer: answer,
-                        feedback: feedback
-                    }}>수정</LinkButton>
                 <DeleteButton to="/board" onClick={handleDeleteBtnClick}>삭제</DeleteButton>
                 <LinkButton to={"/board"} state={{}}>목록 보기</LinkButton>
             </ButtonContainer>

@@ -53,7 +53,7 @@ const BoardListUl = styled.ul `
   flex-direction: column;
   list-style: none;
   margin: 10px;
-  padding: 0;
+  padding: 10px;
 `
 
 const BoardList = styled.li `
@@ -80,17 +80,6 @@ const MainHeader = styled.div `
   border-bottom: 1px solid #ccc;
 `
 
-const HeaderNum = styled.div `
-  width: 10%;
-  padding: 10px 0;
-`
-
-const HeaderTitle = styled.div `
-  width: 90%;
-  padding: 10px 0;
-  text-align: center;
-`
-
 const BoardItem = styled.div`
   cursor: pointer;
 `
@@ -102,14 +91,12 @@ const Main = () => {
     const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {
-      console.log(totalIds);
   }, [totalIds]);
 
   useEffect(() => {
     const getTotalIds = async () => {
         let response = await axios.get("/api/total-ids");
         const data = parseInt(response.headers.totalcount, 10);
-        console.log(data);
         setTotalIds(data || 0);
     };
     getTotalIds();
@@ -121,9 +108,7 @@ const Main = () => {
 
   useEffect(() => {
     const getBoardList = async () => {
-        console.log('getBoardList()');
         let response = await axios.get(`/api/board-list?pageNumber=${currentPage}`);
-        console.log('main/response: ', response);
         setData(response.data.data || []);
       };
     getBoardList();
@@ -147,11 +132,7 @@ const Main = () => {
                 </Inner>
             </Banner>
             <BoardListWrapper>
-              <h2>최근 게시글</h2>
-                <MainHeader>
-                    <HeaderNum>No</HeaderNum>
-                    <HeaderTitle>제 목</HeaderTitle>
-                </MainHeader>
+              <MainHeader>최근 게시글</MainHeader>
                 <BoardListUl>
                     {data.map((board, index) => (
                         <BoardList key={board.id}>

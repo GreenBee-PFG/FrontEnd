@@ -59,14 +59,12 @@ const Board = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    console.log(totalIds);
   }, [totalIds]);
 
   useEffect(() => {
     const getTotalIds = async () => {
       let response = await axios.get("/api/total-ids");
       const data = parseInt(response.headers.totalcount, 10);
-      console.log(data);
       setTotalIds(data || 0);
     };
     getTotalIds();
@@ -78,9 +76,7 @@ const Board = () => {
 
   useEffect(() => {
     const getBoardList = async () => {
-      console.log('getBoardList()');
       let response = await axios.get(`/api/board-list?pageNumber=${currentPage}`);
-      console.log('main/response: ', response);
       setData(response.data.data || []);
     };
     getBoardList();
